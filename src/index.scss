@@ -1,155 +1,241 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.1rem !important;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace !important;
-  font-size: 1rem !important;
+* {
+  box-sizing: border-box;
 }
 
-.main-container {
-  position: relative;
-  background-color: #0d1116;
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #121813;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+}
 
+button,
+a {
+  font: inherit;
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
-a:hover {
-  color: #5000ca;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+.main-container {
+  --background: #121813;
+  --surface: #1b241d;
+  --surface-raised: #222c24;
+  --text: #f1f0e8;
+  --muted: #b7c0b2;
+  --line: rgba(235, 239, 224, 0.14);
+  --accent: #d4f36a;
+  --accent-secondary: #f08b70;
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--background);
+  transition: background-color 220ms ease, color 220ms ease;
 }
 
-p, a, h1, h2, h3, h4, h5, label, button {
-  color: white;
-  font-family: "Lato", sans-serif;
+.main-container.light-mode {
+  --background: #f4f3ed;
+  --surface: #fffef9;
+  --surface-raised: #e9e9df;
+  --text: #20251f;
+  --muted: #555d52;
+  --line: rgba(32, 37, 31, 0.15);
+  --accent: #637a1d;
+  --accent-secondary: #bd583f;
 }
 
-.navigation-bar {
+.main-container p,
+.main-container h1,
+.main-container h2,
+.main-container h3,
+.main-container h4,
+.main-container a,
+.main-container button {
+  color: var(--text);
+}
+
+.main-container a:hover {
+  color: var(--accent);
+}
+
+.navbar-fixed-top.MuiAppBar-root {
+  color: var(--text);
+  background: color-mix(in srgb, var(--background) 92%, transparent);
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease;
+}
+
+.navbar-fixed-top.scrolled {
+  border-bottom-color: var(--line);
+}
+
+.navigation-bar.MuiToolbar-root {
+  width: min(100%, 1320px);
+  height: 76px;
+  min-height: 76px;
+  margin: 0 auto;
+  padding: 0 5vw;
   justify-content: space-between;
-  background-color: #0d1116;
+}
 
-  button {
-    font-size: 1.1rem;
-    font-family: "Lato", sans-serif;
-    text-transform: initial;
-    padding: 6px 10px;
-  }
+.nav-brand {
+  margin-right: auto;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
 
-  svg {
-    cursor: pointer;
-  }
+.nav-brand span {
+  color: var(--accent-secondary);
+}
+
+.navigation-bar > .MuiBox-root {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.navigation-bar button.MuiButton-root {
+  min-width: 0;
+  padding: 8px 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-transform: none;
+}
+
+.navigation-bar button.MuiButton-root:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.navigation-bar .theme-toggle.MuiIconButton-root {
+  margin-left: 12px;
+  color: var(--text);
+}
+
+.navigation-bar .MuiIconButton-root {
+  color: var(--text);
 }
 
 .navigation-bar-responsive {
-  span, p {
-    color: #0d1116;
-    font-family: "Lato", sans-serif;
-  }
+  min-height: 100%;
+  background: var(--surface);
+  color: var(--text);
 }
 
-.container {
-  margin-top: 64px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.navigation-bar-responsive span,
+.navigation-bar-responsive p {
+  color: var(--text);
 }
 
-.header-image {
-  width: 100%;
-  height: 450px;
-
-  img {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-  }
+.navigation-bar-responsive .MuiListItemButton-root:hover {
+  background: var(--surface-raised);
 }
 
 .mobile-menu-top {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  font-weight: bold;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container#top {
+  margin-top: 76px;
 }
 
 .items-container {
-  padding: 5% 10%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  padding: 108px 8vw;
 }
 
-.light-mode {
-  background-color: #f8f9fa;
+.section-kicker {
+  margin: 0 0 14px;
+  color: var(--accent-secondary) !important;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
 
-  .navigation-bar {
-    background-color: #f8f9fa;
+.skills-container > h1,
+.items-container > h1,
+.projects-container > h1 {
+  margin: 0 0 38px;
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.light-mode .navbar-fixed-top.MuiAppBar-root {
+  background: color-mix(in srgb, var(--background) 92%, transparent);
+}
+
+.light-mode .navigation-bar-responsive {
+  background: var(--surface);
+}
+
+@media (max-width: 700px) {
+  :root {
+    scroll-padding-top: 74px;
   }
 
-  p, a, h1, h2, h3, h4, h5, label, button {
-    color: #0d1116;
+  .navigation-bar.MuiToolbar-root {
+    height: 68px;
+    min-height: 68px;
+    padding: 0 5vw;
   }
 
-  a:hover {
-    color: #5000ca;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  .navigation-bar > .MuiBox-root {
+    display: none;
   }
 
-  .navigation-bar svg {
-    color: #0d1116;
+  .container#top {
+    margin-top: 68px;
   }
 
-  .about-section {
-    background-image: url("./assets/images/bg-light.png");
+  .items-container {
+    padding: 76px 6vw;
   }
 
-  .skills-container svg {
-    color: #0d1116;
-  }
-
-  .chip {
-    background-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  }
-
-  .vertical-timeline::before {
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-
-  .vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  }
-
-  .vertical-timeline--two-columns .vertical-timeline-element-content .vertical-timeline-element-date {
-    color: gray;
-  }
-
-  .vertical-timeline-element-content-arrow {
-    border-right: 7px solid rgba(0, 0, 0, 0.08) !important;
-  }
-
-  .flex-chips .chip-title {
-    color: #0d1116;
+  .skills-container > h1,
+  .items-container > h1,
+  .projects-container > h1 {
+    font-size: 2rem;
   }
 }
 
-@media screen {
-  @media (max-width: 768px) {
-    .items-container {
-      padding: 5% 5%;
-    }
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }

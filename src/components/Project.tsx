@@ -1,71 +1,89 @@
 import React from "react";
-import mock01 from '../assets/images/mock01.png';
-import mock02 from '../assets/images/mock02.png';
-import mock03 from '../assets/images/mock03.png';
-import mock04 from '../assets/images/mock04.png';
-import mock05 from '../assets/images/mock05.png';
-import mock06 from '../assets/images/mock06.png';
-import mock07 from '../assets/images/mock07.png';
-import mock08 from '../assets/images/mock08.png';
-import mock09 from '../assets/images/mock09.png';
-import mock10 from '../assets/images/mock10.png';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import SlideshowIcon from '@mui/icons-material/Slideshow';
 import '../assets/styles/Project.scss';
+
+const projects = [
+    {
+        number: "01",
+        category: "COMPUTER VISION · 2026",
+        title: "Tree classification from aerial imagery",
+        description: "Compared CNNs, ViTs, DINOv2, CLIP zero-shot, and CoOp prompt tuning for tree-crown classification and segmentation. Built sliding-window inference and lightweight decoders for high-resolution drone imagery.",
+        tools: "DINOv2 / ViT / CLIP / PyTorch",
+        repository: "https://github.com/ZahhS/trees_project_2026",
+        report: "/reports/Tree_Report_2026_AT_ZS.pdf",
+    },
+    {
+        number: "02",
+        category: "AUDIO ML · 2026",
+        title: "BirdCLEF+ species classification",
+        description: "Engineered 490 MFCC, spectral, and statistical features for a 234-species multi-label task. Evaluated Logistic Regression, SVC, and XGBoost with one-vs-rest classification and cross-validation.",
+        tools: "Python / XGBoost / Audio features",
+        repository: "https://github.com/Franciline/ML_project",
+        report: "/reports/BirdClef.pdf",
+    },
+    {
+        number: "03",
+        category: "INFORMATION RETRIEVAL · 2026",
+        title: "Semantic search benchmark",
+        description: "Benchmarked BM25, Lucene, TF-IDF, IBM Model 1, and approximate-nearest-neighbor indexes on 298K Stack Overflow question-answer pairs. Sentence Transformer embeddings raised answer recall@100 from about 0.20 to 0.57.",
+        tools: "Sentence Transformers / HNSW / NAPP",
+        repository: "https://github.com/alan-man/FlexNeuART-IR-TTP",
+        slides: "/reports/Rapport%20de%20progression.pdf",
+    },
+    {
+        number: "04",
+        category: "NLP · COMPETITION · 40+ TEAMS",
+        title: "Sentiment & speech classification",
+        description: "Built speaker and movie-review classification pipelines spanning topic models, text features, recurrent networks, BERT, and RoBERTa. Improved F1 from 0.62 to 0.81.",
+        tools: "NLP / RNNs / BERT / RoBERTa",
+        repository: "https://github.com/alan-man/tal-projet",
+        report: "/reports/Sentiment.pdf",
+    },
+];
 
 function Project() {
     return(
     <div className="projects-container" id="projects">
-        <h1>Personal Projects</h1>
+        <p className="section-kicker">SELECTED WORK · 2026</p>
+        <h1>Projects</h1>
         <div className="projects-grid">
-            <div className="project">
-                <a href="https://www.filmate.club/" target="_blank" rel="noreferrer"><img src={mock10} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://www.filmate.club/" target="_blank" rel="noreferrer"><h2>Filmate AI</h2></a>
-                <p>Developed movie finder app with semantic search and sentiment analysis using OpenAI GPT-3.5 Turbo, Qdrant, React, and Flask.</p>
-            </div>
-            <div className="project">
-                <a href="https://yujisatojr.itch.io/highspeedchase" target="_blank" rel="noreferrer"><img src={mock09} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://yujisatojr.itch.io/highspeedchase" target="_blank" rel="noreferrer"><h2>High Speed Chase</h2></a>
-                <p>Designed, developed, and launched a 3D multiplayer racing game with C# and Unity. This is available on Itch.io for gamers worldwide to enjoy.</p>
-            </div>
-            <div className="project">
-                <a href="https://yujisatojr.itch.io/spacecraft" target="_blank" rel="noreferrer"><img src={mock08} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://yujisatojr.itch.io/spacecraft" target="_blank" rel="noreferrer"><h2>Astro Raiders</h2></a>
-                <p>Developed and released a 2D shooting game with C# and Unity. This project is hosted on the Itch.io public marketplace.</p>
-            </div>
-            <div className="project">
-                <a href="https://www.datumlearn.com/" target="_blank" rel="noreferrer"><img src={mock07} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://www.datumlearn.com/" target="_blank" rel="noreferrer"><h2>Datum: Integrated Learning Platform</h2></a>
-                <p>This is an online educational platform that provides high-quality, data science-focused learning resources in the Japanese language. I created the entire platform from scratch using Ruby on Rails.</p>
-            </div>
-            <div className="project">
-                <a href="http://www.wemanage.jp/" target="_blank" rel="noreferrer"><img src={mock06} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="http://www.wemanage.jp/" target="_blank" rel="noreferrer"><h2>WeManage: Real Estate Asset Management</h2></a>
-                <p>This mobile application allows realtors in Japan to securely manage their property information and view future income predictions. This app is built with Ruby on Rails and JavaScript.</p>
-            </div>
-            <div className="project">
-                <a href="https://www.byuh.edu/covid-19-case-management" target="_blank" rel="noreferrer"><img src={mock05} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://www.byuh.edu/covid-19-case-management" target="_blank" rel="noreferrer"><h2>COVID-19 Case Management</h2></a>
-                <p>Built official charts for COVID/vaccination tracking for an educational institution using JavaScript and the Google Sheets API v4. The dashboard served the university's leadership in their decision-making processes.</p>
-            </div>
-            <div className="project">
-                <a href="https://github.com/yujisatojr/multi-reg-analysis" target="_blank" rel="noreferrer"><img src={mock04} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://github.com/yujisatojr/multi-reg-analysis" target="_blank" rel="noreferrer"><h2>Multiple Regression Property Analysis</h2></a>
-                <p>Analyzed the real estate market in Japan and predicted property prices by implementing statistical methods such as OLS and multi-regression analysis. This project leveraged Python and various libraries such as Pandas, NumPy, Matplotlib, and Scikit-Learn.</p>
-            </div>
-            <div className="project">
-                <a href="https://holokai.byuh.edu/programs-of-study" target="_blank" rel="noreferrer"><img src={mock03} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://holokai.byuh.edu/programs-of-study" target="_blank" rel="noreferrer"><h2>Programs of Study</h2></a>
-                <p>Designed and developed a custom component for a CMS-based platform (e.g., 'Brightspot') using Java, Handlebars, and LESS. University students can find their majors of interest through this module.</p>
-            </div>
-            <div className="project">
-                <a href="https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix" target="_blank" rel="noreferrer"><img src={mock02} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix" target="_blank" rel="noreferrer"><h2>Transfer Evaluation Matrix</h2></a>
-                <p>Created an interactive CSV table generator with Java, Handlebars, and LESS. This project helps transfer students to quickly identify eligible credits.</p>
-            </div>
-            <div className="project">
-                <a href="https://github.com/yujisatojr/submeowrine" target="_blank" rel="noreferrer"><img src={mock01} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://github.com/yujisatojr/submeowrine" target="_blank" rel="noreferrer"><h2>Submeowrine</h2></a>
-                <p>Developed and released an Android mobile application using Java and Android Studio that runs a 2D shooting game.</p>
-            </div>
+            {projects.map((project) => (
+                <article className="project" key={project.number}>
+                    <div className="project-topline">
+                        <span>{project.category}</span>
+                        <span>{project.number}</span>
+                    </div>
+                    <h2>{project.title}</h2>
+                    <p>{project.description}</p>
+                    <p className="project-tools">{project.tools}</p>
+                    <div className="project-links">
+                        {project.repository && (
+                            <a className="project-link" href={project.repository} target="_blank" rel="noreferrer" aria-label={`GitHub repository for ${project.title}`}>
+                                <GitHubIcon />
+                                <span>View source</span>
+                                <OpenInNewIcon />
+                            </a>
+                        )}
+                        {project.report && (
+                            <a className="project-link" href={project.report} target="_blank" rel="noreferrer" aria-label={`Report PDF for ${project.title}`}>
+                                <PictureAsPdfIcon />
+                                <span>Read report</span>
+                                <OpenInNewIcon />
+                            </a>
+                        )}
+                        {project.slides && (
+                            <a className="project-link" href={project.slides} target="_blank" rel="noreferrer" aria-label={`Slides for ${project.title}`}>
+                                <SlideshowIcon />
+                                <span>View slides</span>
+                                <OpenInNewIcon />
+                            </a>
+                        )}
+                    </div>
+                </article>
+            ))}
         </div>
     </div>
     );

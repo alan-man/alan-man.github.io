@@ -1,87 +1,55 @@
 import React from "react";
-import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
+import { faBookOpen, faChartLine, faCode, faEye } from '@fortawesome/free-solid-svg-icons';
 import Chip from '@mui/material/Chip';
 import '../assets/styles/Expertise.scss';
 
-const labelsFirst = [
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
-    "SASS",
-    "Flask",
-    "Python",
-    "SQL",
-    "PostgreSQL",
-    "Postman"
-];
-
-const labelsSecond = [
-    "Git",
-    "GitHub Actions",
-    "Docker",
-    "AWS",
-    "Azure",
-    "Linux",
-    "Snowflake",
-    "Pandas",
-    "Selenium",
-];
-
-const labelsThird = [
-    "OpenAI",
-    "Groq",
-    "LangChain",
-    "Qdrant",
-    "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
+const skillGroups = [
+    {
+        icon: faChartLine,
+        title: "Machine Learning & Data Science",
+        description: "I analyze data, compare models, and evaluate how well they generalize across real-world classification problems.",
+        labels: ["Machine Learning", "Deep Learning", "Reinforcement Learning", "Data Analysis", "Scikit-learn", "Pandas", "NumPy", "XGBoost", "Logistic Regression", "SVC", "Multi-label classification", "Probability", "Cross-validation", "Hyperparameter tuning", "Neptuna"],
+    },
+    {
+        icon: faEye,
+        title: "Deep Learning & Computer Vision",
+        description: "I work with modern neural architectures for image understanding, representation learning, and model evaluation.",
+        labels: ["PyTorch", "Transformers", "CNNs", "ViTs", "DINOv2", "CLIP", "Fine-tuning", "Data augmentation", "AUROC", "Average Precision (AP)", "Class imbalance", "LoRA / PEFT"],
+    },
+    {
+        icon: faBookOpen,
+        title: "NLP & Knowledge Systems",
+        description: "I build search and language systems that connect models to useful information and structured knowledge.",
+        labels: ["Natural Language Processing (NLP)", "Information Retrieval", "Large Language Models (LLMs)", "Retrieval-Augmented Generation (RAG)", "Knowledge Graphs", "Symbolic AI", "Logic-based reasoning", "Embeddings", "ChromaDB", "Hugging Face"],
+    },
+    {
+        icon: faCode,
+        title: "Programming, Tools & MLOps",
+        description: "I build end-to-end workflows, from experiments and APIs to containerized cloud deployments.",
+        labels: ["Python", "C", "TypeScript", "JavaScript", "Git", "Jupyter", "Linux", "Bash", "Docker", "FastAPI", "AWS EC2", "Azure", "Runpod", "GitHub Actions", "Supabase", "PostgreSQL", "MongoDB", "Next.js", "React", "REST APIs"],
+    },
 ];
 
 function Expertise() {
     return (
     <div className="container" id="expertise">
         <div className="skills-container">
-            <h1>Expertise</h1>
+            <h1>What I work on</h1>
             <div className="skills-grid">
-                <div className="skill">
-                    <FontAwesomeIcon icon={faReact} size="3x"/>
-                    <h3>Full Stack Web Development</h3>
-                    <p>I have built a diverse array of web applications from scratch using modern technologies such as React and Flask. I have a strong proficiency in the SDLC process and frontend + backend development.</p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsFirst.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
-                    </div>
-                </div>
-
-                <div className="skill">
-                    <FontAwesomeIcon icon={faDocker} size="3x"/>
-                    <h3>DevOps & Automation</h3>
-                    <p>Once the application is built, I help clients set up DevOps testing, CI/CD pipelines, and deployment automation to support the successful Go-Live.</p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsSecond.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
-                    </div>
-                </div>
-
-                <div className="skill">
-                    <FontAwesomeIcon icon={faPython} size="3x"/>
-                    <h3>GenAI & LLM</h3>
-                    <p>Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making.</p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsThird.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
-                    </div>
-                </div>
+                {skillGroups.map((group, index) => (
+                    <article className="skill" key={group.title}>
+                        <div className="skill-heading">
+                            <span className="skill-number">0{index + 1}</span>
+                            <FontAwesomeIcon icon={group.icon} />
+                        </div>
+                        <h3>{group.title}</h3>
+                        <p>{group.description}</p>
+                        <div className="flex-chips" aria-label={`${group.title} technologies`}>
+                            {group.labels.map((label) => <Chip key={label} className="chip" label={label} />)}
+                        </div>
+                    </article>
+                ))}
             </div>
         </div>
     </div>

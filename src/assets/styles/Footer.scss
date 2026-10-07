@@ -1,15 +1,30 @@
 footer {
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding: 28px 6vw 34px;
+    border-top: 1px solid var(--line);
 
     svg {
-        width: 1.1em !important;
-        height: 1.1em !important;
-        margin-right: 10px;
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    a {
+        color: var(--muted) !important;
+    }
+
+    a:hover {
+        color: var(--accent) !important;
     }
 
     p {
-        font-size: 0.8em;
+        margin: 15px 0 0;
+        color: var(--muted) !important;
+        font-size: 0.75rem;
     }
 }

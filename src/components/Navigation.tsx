@@ -17,9 +17,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 
 const drawerWidth = 240;
-const navItems = [['Expertise', 'expertise'], ['History', 'history'], ['Projects', 'projects'], ['Contact', 'contact']];
+const navItems = [['Focus', 'expertise'], ['Experience', 'history'], ['Projects', 'projects'], ['Contact', 'contact']];
 
-function Navigation({parentToChild, modeChange}: any) {
+interface NavigationProps {
+  parentToChild: { mode: string };
+  modeChange: () => void;
+}
+
+function Navigation({parentToChild, modeChange}: NavigationProps) {
 
   const {mode} = parentToChild;
 
@@ -47,14 +52,7 @@ function Navigation({parentToChild, modeChange}: any) {
   }, []);
 
   const scrollToSection = (section: string) => {
-    console.log(section)
-    const expertiseElement = document.getElementById(section);
-    if (expertiseElement) {
-      expertiseElement.scrollIntoView({ behavior: 'smooth' });
-      console.log('Scrolling to:', expertiseElement);  // Debugging: Ensure the element is found
-    } else {
-      console.error('Element with id "expertise" not found');  // Debugging: Log error if element is not found
-    }
+    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const drawer = (
@@ -87,11 +85,7 @@ function Navigation({parentToChild, modeChange}: any) {
           >
             <MenuIcon />
           </IconButton>
-          {mode === 'dark' ? (
-            <LightModeIcon onClick={() => modeChange()}/>
-          ) : (
-            <DarkModeIcon onClick={() => modeChange()}/>
-          )}
+          <a className="nav-brand" href="#top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>AT<span>.</span></a>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <Button key={item[0]} onClick={() => scrollToSection(item[1])} sx={{ color: '#fff' }}>
@@ -99,6 +93,9 @@ function Navigation({parentToChild, modeChange}: any) {
               </Button>
             ))}
           </Box>
+          <IconButton className="theme-toggle" color="inherit" aria-label={`Switch to ${mode === 'dark' ? 'light' : 'dark'} theme`} onClick={modeChange}>
+            {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
         </Toolbar>
       </AppBar>
       <nav>

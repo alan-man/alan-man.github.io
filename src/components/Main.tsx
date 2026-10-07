@@ -22,7 +22,7 @@ function Main() {
           <p className="intro-copy">I’m a Sorbonne master’s student in machine learning, AI, and data with a foundation in computer science and mathematics. I like taking ideas from research to working software, whether that means a RAG equiped language model, a vision pipeline, or a product someone can use.</p>
           <div className="profile-meta">
             <span>Los Angeles, California</span>
-            <span>French · Serbian · English (104 TOEFL)</span>
+            <span>French · Serbian · English (107 TOEFL)</span>
           </div>
           <aside className="availability" aria-label="Internship search">
             <span className="availability-dot" aria-hidden="true" />

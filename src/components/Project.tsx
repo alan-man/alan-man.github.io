@@ -42,6 +42,15 @@ const projects = [
         repository: "https://github.com/alan-man/tal-projet",
         report: "/reports/Sentiment.pdf",
     },
+    {
+        number: "05",
+        category: "DATA SCIENCE · DYNAMIC PRICING",
+        title: "Dynamic Pricing in Paris: How Temporal Features Improve Airbnb Valuation Models",
+        description: "Built a Paris Airbnb valuation model by combining historical InsideAirbnb/Kaggle data with a custom Q4 2025 web scraper. Temporal features such as booking month and seasonal flags helped a Random Forest regressor explain about 52% of price variance, showing that seasonality is essential for accurate pricing during peak periods.",
+        tools: "Python / Random Forest / Web scraping / Feature engineering",
+        repository: "https://github.com/alan-man/price_prediction_project",
+        report: "/reports/dalas_project.pdf",
+    },
 ];
 
 function Project() {

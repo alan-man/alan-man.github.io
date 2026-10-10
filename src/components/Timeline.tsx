@@ -22,7 +22,7 @@ function Timeline() {
             <span className="timeline-type">EDUCATION</span>
             <h3 className="vertical-timeline-element-title">Master's in Machine Learning, AI & Data</h3>
             <h4 className="vertical-timeline-element-subtitle">Sorbonne University · Paris, France</h4>
-            <p>Advanced study in deep learning, NLP, information retrieval, reinforcement learning, computer vision, and MLOps.</p>
+            <p>Advanced study in deep learning, ML, NLP, information retrieval, reinforcement learning, computer vision, and databases.</p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
@@ -55,7 +55,7 @@ function Timeline() {
             <span className="timeline-type">EDUCATION</span>
             <h3 className="vertical-timeline-element-title">Double bachelor's in Computer Science & Mathematics</h3>
             <h4 className="vertical-timeline-element-subtitle">Sorbonne University · Paris, France</h4>
-            <p>Studied algorithms, probability, numerical analysis, data science, and databases.</p>
+            <p>Studied algorithms, probability, numerical methods, data science, databases, and all the basic languages in CS (Python, SQL, Java, C).</p>
           </VerticalTimelineElement>
         </VerticalTimeline>
       </div>

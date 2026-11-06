@@ -19,7 +19,7 @@ function Main() {
           <p className="eyebrow">ML, AI Engineer & Data Scientist</p>
           <h1>Alan<br />Tambellini</h1>
           <p className="role-line">Hi there ! I use ML and AI to build cool stuff.</p>
-          <p className="intro-copy">I’m a Sorbonne master’s student in machine learning, AI, and data with a foundation in computer science and mathematics. I like taking ideas from research to working software, whether that means a RAG equiped language model, a vision pipeline, or a product someone can use.</p>
+          <p className="intro-copy">I’m a Sorbonne master’s student in machine learning, AI, and data with a foundation in computer science and mathematics. What interests me the most is ML applied to environmental science, foundation models, computer vision, and applied AI in general. I built tree detection pipelines in aerial imagery with IEES Paris. I also co-founded OwnWise, an AI contract risk reviewer, and took it from prototype to production.</p>
           <div className="profile-meta">
             <span>Los Angeles, California</span>
             <span>French · Serbian · English (107/120 TOEFL English Fluent)</span>
@@ -28,8 +28,8 @@ function Main() {
             <span className="availability-dot" aria-hidden="true" />
             <div className="availability-copy">
               <strong>Seeking an internship</strong>
-              <p>Machine Learning Engineer · AI Engineer · Data Scientist</p>
-              <small>March–September 2027</small>
+              <p>Machine Learning Engineer · AI Engineer · Data Scientist · Data Engineer</p>
+              <small> 5-6 Months, around March–September 2027</small>
             </div>
           </aside>
           <a className="contact-link" href="mailto:alan.tambellinijonic@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>

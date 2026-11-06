@@ -5,7 +5,16 @@ import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timel
 import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss'
 
+// On computers a box appears once its top reaches 60% of the way down the screen.
+// Phones show less at once, so they keep the library's default near the bottom edge.
+const revealProps = () => ({
+  rootMargin: `0px 0px ${window.matchMedia('(min-width: 901px)').matches ? '-40%' : '-40px'} 0px`,
+  triggerOnce: true,
+});
+
 function Timeline() {
+  const reveal = revealProps();
+
   return (
     <div id="history">
       <div className="items-container">
@@ -14,6 +23,7 @@ function Timeline() {
         <p className="timeline-intro">A mix of building real products and studying how everything works behind them.</p>
         <VerticalTimeline>
           <VerticalTimelineElement
+            intersectionObserverProps={reveal}
             className="vertical-timeline-element--education"
             date="Sep 2025 – 2027 · expected"
             iconStyle={{ background: '#d4f36a', color: '#172019' }}
@@ -25,6 +35,7 @@ function Timeline() {
             <p>Advanced study in deep learning, ML, NLP, information retrieval, reinforcement learning, computer vision, and databases.</p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
+            intersectionObserverProps={reveal}
             className="vertical-timeline-element--work"
             date="Oct 2025 – Mar 2026"
             iconStyle={{ background: '#f08b70', color: '#172019' }}
@@ -36,6 +47,7 @@ function Timeline() {
             <p>Took OwnWise, an AI contract risk reviewer, from prototype to deployed product. Self-hosted Qwen3-8B on vLLM with scale-to-zero GPUs, structured outputs, RAG pipeline, and hallucination guardrails, on a FastAPI and Next.js stack that never stores contracts.</p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
+            intersectionObserverProps={reveal}
             className="vertical-timeline-element--work"
             date="Summers 2024 – 2026"
             iconStyle={{ background: '#f08b70', color: '#172019' }}
@@ -47,6 +59,7 @@ function Timeline() {
             <p>Contributed across a stadium ticketing platform and campus mobile app: Stripe payments, MongoDB workflows, iOS and Android features, and an Azure OpenAI RAG chatbot. In 2026, introduced Claude Code-assisted development workflows.</p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
+            intersectionObserverProps={reveal}
             className="vertical-timeline-element--education"
             date="Sep 2022 – May 2025"
             iconStyle={{ background: '#d4f36a', color: '#172019' }}

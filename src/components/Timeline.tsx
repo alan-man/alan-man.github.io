@@ -33,7 +33,7 @@ function Timeline() {
             <span className="timeline-type">WORK · CO-FOUNDER & CTO</span>
             <h3 className="vertical-timeline-element-title">Software & AI Engineer</h3>
             <h4 className="vertical-timeline-element-subtitle">OwnWise LTD · United Kingdom</h4>
-            <p>Built a privacy-focused legal AI platform from concept to MVP. Developed its Next.js and FastAPI product, legal-source RAG pipeline, and LoRA fine-tuning workflow; deployed containerized services on AWS and on-demand GPU infrastructure.</p>
+            <p>Took OwnWise, an AI contract risk reviewer, from prototype to deployed product. Self-hosted Qwen3-8B on vLLM with scale-to-zero GPUs, structured outputs, RAG pipeline, and hallucination guardrails, on a FastAPI and Next.js stack that never stores contracts.</p>
           </VerticalTimelineElement>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"

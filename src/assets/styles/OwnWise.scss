@@ -1,0 +1,401 @@
+$reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+// The scroll-linked variables below are written by OwnWise.tsx.
+.ownwise {
+    --nav-height: 76px;
+    --dock-ratio: 0.58;
+    --enter: 0;
+    --dock: 0;
+    --dock-scale: 1;
+    --dock-x: 0px;
+    --lead: 0;
+    --rail: 0;
+    margin: 0 -4vw 72px;
+}
+
+.ownwise-intro {
+    padding: 0 4vw;
+    border-top: 1px solid var(--line);
+    padding-top: 27px;
+    transform: translateY(calc(var(--enter) * 36px));
+}
+
+.ownwise-wordmark {
+    margin: 26px 0 0 -0.04em;
+    overflow: hidden;
+    font-size: clamp(3.4rem, 18.5vw, 14rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+}
+
+.ownwise-wordmark span {
+    display: inline-block;
+    transform: translateY(105%) rotate(7deg);
+    transform-origin: left bottom;
+    transition: transform 1100ms $reveal-ease;
+    transition-delay: calc(var(--i) * 55ms);
+}
+
+.ownwise-wordmark.is-seen span {
+    transform: none;
+}
+
+.ownwise .ownwise-tagline {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 1.15rem;
+    line-height: 1.5;
+}
+
+.ownwise-track {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 40px;
+}
+
+.ownwise-stage,
+.ownwise-story {
+    grid-area: 1 / 1;
+    min-width: 0;
+}
+
+.ownwise-stage {
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 2;
+    display: flex;
+    align-self: start;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - var(--nav-height));
+    pointer-events: none; // the text underneath stays selectable
+}
+
+.ownwise-frame {
+    --frame-scale: calc((0.82 + 0.18 * var(--enter)) * (1 - var(--dock) * (1 - var(--dock-scale))));
+    position: relative;
+    width: min(100%, calc((100vh - var(--nav-height) - 72px) * 16 / 9)); // leaves room for the caption
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    pointer-events: auto;
+    transform:
+        perspective(1500px)
+        translate3d(calc(var(--dock) * var(--dock-x)), calc((1 - var(--enter)) * 30px), 0)
+        rotateX(calc((1 - var(--enter)) * 26deg))
+        scale(var(--frame-scale));
+    will-change: transform;
+}
+
+// Soft light behind the video, in the page accents.
+.ownwise-frame::before {
+    position: absolute;
+    z-index: -1;
+    inset: 4%;
+    content: "";
+    background: linear-gradient(120deg, var(--accent), var(--accent-secondary));
+    border-radius: 40px;
+    filter: blur(70px);
+    opacity: calc(var(--enter) * 0.3);
+}
+
+.ownwise-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    background: var(--surface-raised);
+    border-radius: 18px;
+    box-shadow: 0 0 0 1px var(--line), 0 30px 80px -30px rgba(0, 0, 0, 0.6);
+}
+
+.ownwise .ownwise-toggle {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    color: #fff;
+    cursor: pointer;
+    background: rgba(18, 24, 19, 0.72);
+    border: 0;
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    transform: scale(calc(1 / var(--frame-scale))); // keeps its size when the video docks
+    transform-origin: right bottom;
+    transition: background-color 180ms ease;
+}
+
+.ownwise .ownwise-toggle:hover {
+    background: rgba(18, 24, 19, 0.92);
+}
+
+.ownwise-caption {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    left: 0;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.73rem;
+    opacity: var(--enter);
+    transform: scale(calc(1 / var(--frame-scale)));
+    transform-origin: left top;
+}
+
+.ownwise-story {
+    margin-left: calc(var(--dock-ratio) * 100% + 52px);
+    padding: 140vh 4vw 24vh 0; // arrives as the video docks, see HOLD and DOCK in OwnWise.tsx
+}
+
+.ownwise-summary {
+    margin-bottom: 22vh;
+}
+
+.ownwise-summary .project-links {
+    opacity: var(--lead);
+}
+
+.ownwise .ownwise-lead {
+    margin: 0;
+    font-size: clamp(1.45rem, 2.1vw, 1.95rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.32;
+}
+
+.ownwise-lead span {
+    opacity: clamp(0.16, calc(var(--lead) * (var(--words) + 4) - var(--i)), 1);
+}
+
+.ownwise-chapters {
+    position: relative;
+    padding-left: 30px;
+}
+
+.ownwise-chapters::before,
+.ownwise-chapters::after {
+    position: absolute;
+    top: 8px;
+    bottom: 0;
+    left: 3px;
+    width: 1px;
+    content: "";
+    background: var(--line);
+}
+
+.ownwise-chapters::after {
+    background: var(--accent);
+    transform: scaleY(var(--rail));
+    transform-origin: top;
+}
+
+.ownwise-chapter {
+    position: relative;
+    padding-bottom: 20vh;
+    opacity: 0.42;
+    transition: opacity 500ms ease;
+}
+
+.ownwise-chapter:last-child {
+    padding-bottom: 0;
+}
+
+.ownwise-chapter.is-focused {
+    opacity: 1;
+}
+
+.ownwise-chapter::before {
+    position: absolute;
+    top: 6px;
+    left: -30px;
+    z-index: 1;
+    width: 7px;
+    height: 7px;
+    content: "";
+    background: var(--background);
+    border: 1px solid var(--muted);
+    border-radius: 50%;
+    transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.ownwise-chapter.is-focused::before {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.ownwise-chapter > * {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(26px);
+    transition: opacity 800ms ease, filter 800ms ease, transform 900ms $reveal-ease;
+}
+
+.ownwise-chapter > :nth-child(2) {
+    transition-delay: 90ms;
+}
+
+.ownwise-chapter > :nth-child(3) {
+    transition-delay: 180ms;
+}
+
+.ownwise-chapter.is-seen > * {
+    opacity: 1;
+    filter: none;
+    transform: none;
+}
+
+.ownwise .ownwise-chapter-number {
+    margin: 0;
+    color: var(--accent-secondary);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.73rem;
+}
+
+.ownwise-chapter h3 {
+    margin: 14px 0 12px;
+    font-size: 1.55rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.ownwise-points {
+    padding: 0;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.96rem;
+    line-height: 1.75;
+    list-style: none;
+}
+
+.ownwise-points li {
+    position: relative;
+    padding-left: 16px;
+}
+
+.ownwise-points li + li {
+    margin-top: 8px;
+}
+
+.ownwise-points li::before {
+    position: absolute;
+    top: 0.85em;
+    left: 0;
+    width: 7px;
+    height: 1px;
+    content: "";
+    background: var(--accent);
+}
+
+// Keywords get swept with a highlighter, like the clauses in the product.
+.ownwise-points mark {
+    padding: 0.08em 0.22em;
+    margin: 0 -0.08em;
+    color: var(--text);
+    background: linear-gradient(color-mix(in srgb, var(--accent) 24%, transparent), color-mix(in srgb, var(--accent) 24%, transparent)) no-repeat left / 0% 100%;
+    border-radius: 3px;
+    transition: background-size 750ms $reveal-ease 420ms;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.ownwise-chapter.is-seen .ownwise-points mark {
+    background-size: 100% 100%;
+}
+
+.ownwise-stack .chip.MuiChip-root {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+    transition: opacity 500ms ease, transform 600ms $reveal-ease;
+    transition-delay: calc(200ms + var(--i) * 28ms);
+}
+
+.ownwise-stack.is-seen .chip.MuiChip-root {
+    opacity: 1;
+    transform: none;
+}
+
+// Small screens: the video pins to the top and the story scrolls up underneath it.
+@media (max-width: 900px) {
+    .ownwise {
+        --dock-ratio: 1;
+        margin: 0 -6vw 56px;
+    }
+
+    .ownwise-intro {
+        padding-right: 6vw;
+        padding-left: 6vw;
+    }
+
+    .ownwise-intro .project-topline {
+        flex-wrap: wrap;
+        gap: 6px 16px;
+    }
+
+    .ownwise-track {
+        display: block;
+        margin-top: 28px;
+    }
+
+    .ownwise-stage {
+        height: auto;
+        padding: 10px 6vw 34px;
+        background: var(--background);
+    }
+
+    .ownwise-frame {
+        width: 100%;
+    }
+
+    .ownwise-frame::before {
+        display: none;
+    }
+
+    .ownwise-video {
+        border-radius: 10px;
+    }
+
+    .ownwise .ownwise-toggle {
+        right: 10px;
+        bottom: 10px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .ownwise-story {
+        margin-left: 0;
+        padding: 36px 6vw 12vh;
+    }
+
+    .ownwise-summary {
+        margin-bottom: 12vh;
+    }
+
+    .ownwise-chapter {
+        padding-bottom: 12vh;
+    }
+}
+
+@media (max-width: 700px) {
+    .ownwise {
+        --nav-height: 68px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ownwise-chapter {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 901px) {
+    .ownwise-story {
+        padding-top: 0;
+    }
+}

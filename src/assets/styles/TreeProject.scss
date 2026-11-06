@@ -1,0 +1,166 @@
+.tree-project {
+    margin-bottom: 72px;
+    padding-top: 27px;
+    border-top: 1px solid var(--line);
+}
+
+.tree-project h2 {
+    margin: 22px 0 0;
+    font-size: clamp(2.1rem, 4.2vw, 3.3rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+}
+
+.tree-project .tree-subtitle {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 1.15rem;
+    line-height: 1.5;
+}
+
+.tree-row {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 54px;
+    align-items: start;
+    margin-top: 44px;
+}
+
+.tree-project .tree-summary {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.55;
+}
+
+.tree-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 22px;
+    align-items: center;
+    margin-top: 26px;
+}
+
+.tree-project .tree-github {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    padding: 13px 20px;
+    color: var(--background);
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: var(--accent);
+    border-radius: 8px;
+    transition: background-color 180ms ease;
+}
+
+.tree-project .tree-github:hover {
+    color: var(--background);
+    background: color-mix(in srgb, var(--accent) 84%, var(--text));
+}
+
+.tree-github svg {
+    font-size: 1.3rem;
+}
+
+.tree-github svg:last-child {
+    font-size: 1rem;
+}
+
+.tree-figure {
+    margin: 0;
+}
+
+.tree-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px var(--line);
+}
+
+.tree-figure figcaption {
+    margin-top: 12px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.73rem;
+    line-height: 1.5;
+}
+
+.tree-project h3 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.tree-results article + article {
+    margin-top: 30px;
+}
+
+.tree-results ul {
+    padding: 0;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.96rem;
+    line-height: 1.7;
+    list-style: none;
+}
+
+.tree-results li {
+    position: relative;
+    padding-left: 16px;
+}
+
+.tree-results li + li {
+    margin-top: 6px;
+}
+
+.tree-results li::before {
+    position: absolute;
+    top: 0.85em;
+    left: 0;
+    width: 7px;
+    height: 1px;
+    content: "";
+    background: var(--accent);
+}
+
+.tree-results mark {
+    color: var(--text);
+    font-weight: 600;
+    background: none;
+}
+
+.tree-footer {
+    display: flex;
+    gap: 28px 54px;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 44px;
+    padding-top: 27px;
+    border-top: 1px solid var(--line);
+}
+
+.tree-footer .tree-github {
+    flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+    .tree-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+        margin-top: 32px;
+    }
+
+    .tree-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 700px) {
+    .tree-project {
+        margin-bottom: 56px;
+    }
+}

@@ -3,20 +3,13 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import SlideshowIcon from '@mui/icons-material/Slideshow';
+import OwnWise from './OwnWise';
+import TreeProject from './TreeProject';
 import '../assets/styles/Project.scss';
 
 const projects = [
     {
         number: "01",
-        category: "COMPUTER VISION · 2026",
-        title: "Tree classification from aerial imagery",
-        description: "Compared CNNs, ViTs, DINOv2, CLIP zero-shot, and CoOp prompt tuning for tree-crown classification and segmentation. Built sliding-window inference and lightweight decoders for high-resolution drone imagery.",
-        tools: "DINOv2 / ViT / CLIP / PyTorch",
-        repository: "https://github.com/ZahhS/trees_project_2026",
-        report: "/reports/Tree_Report_2026_AT_ZS.pdf",
-    },
-    {
-        number: "02",
         category: "AUDIO ML · 2026",
         title: "BirdCLEF+ species classification",
         description: "Engineered 490 MFCC, spectral, and statistical features for a 234-species multi-label task. Evaluated Logistic Regression, SVC, and XGBoost with one-vs-rest classification and cross-validation.",
@@ -25,7 +18,7 @@ const projects = [
         report: "/reports/BirdClef.pdf",
     },
     {
-        number: "03",
+        number: "02",
         category: "INFORMATION RETRIEVAL · 2026",
         title: "Semantic search benchmark",
         description: "Benchmarked BM25, Lucene, TF-IDF, IBM Model 1, and approximate-nearest-neighbor indexes on 298K Stack Overflow question-answer pairs. Sentence Transformer embeddings raised answer recall@100 from about 0.20 to 0.57.",
@@ -34,7 +27,7 @@ const projects = [
         slides: "/reports/Rapport%20de%20progression.pdf",
     },
     {
-        number: "04",
+        number: "03",
         category: "NLP · COMPETITION · 40+ TEAMS",
         title: "Sentiment & speech classification",
         description: "Built speaker and movie-review classification pipelines spanning topic models, text features, recurrent networks, BERT, and RoBERTa. Improved F1 from 0.62 to 0.81.",
@@ -43,7 +36,7 @@ const projects = [
         report: "/reports/Sentiment.pdf",
     },
     {
-        number: "05",
+        number: "04",
         category: "DATA SCIENCE · DYNAMIC PRICING",
         title: "Dynamic Pricing in Paris: How Temporal Features Improve Airbnb Valuation Models",
         description: "Built a Paris Airbnb valuation model by combining historical InsideAirbnb/Kaggle data with a custom Q4 2025 web scraper. Temporal features such as booking month and seasonal flags helped a Random Forest regressor explain about 52% of price variance, showing that seasonality is essential for accurate pricing during peak periods.",
@@ -58,6 +51,9 @@ function Project() {
     <div className="projects-container" id="projects">
         <p className="section-kicker">SELECTED WORK · 2026</p>
         <h1>Projects</h1>
+        <OwnWise />
+        <TreeProject />
+        <p className="section-kicker">MORE PROJECTS</p>
         <div className="projects-grid">
             {projects.map((project) => (
                 <article className="project" key={project.number}>

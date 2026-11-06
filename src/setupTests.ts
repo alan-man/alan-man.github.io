@@ -19,3 +19,8 @@ if (!('IntersectionObserver' in window)) {
 		},
 	});
 }
+
+// jsdom has neither of these.
+window.matchMedia = window.matchMedia || ((query: string) => ({ matches: false, media: query } as MediaQueryList));
+window.HTMLMediaElement.prototype.play = () => Promise.resolve();
+window.HTMLMediaElement.prototype.pause = () => {};
